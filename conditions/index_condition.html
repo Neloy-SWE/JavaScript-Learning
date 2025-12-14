@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-Learning-condition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- if else -->
+    <div>
+        <h1>if-else example: grade check</h1>
+        <input type="number" placeholder="input your score" id="scoreInput">
+        <div class="buttonId">
+            <button onclick="checkGrade()">Check Grade</button>
+            <button onclick="restart()" disabled id="buttonRestart">Restart</button>
+        </div>
+
+        <p id="result"></p>
+    </div>
+
+    <!-- switch -->
+    <div class="block">
+        <h1>switch example: day status</h1>
+        <input id="checkDate" type="date"><br>
+        <div class="buttonId">
+            <button onclick="checkStatus()">Check Status</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+        <p id="dayStatus"></p>
+    </div>
+
+    <!-- ternary -->
+    <div class="block">
+        <h1>Ternary</h1>
+        <input id="ageInput" type="number" placeholder="Enter your age">
+        <div class="buttonId">
+            <button onclick="checkAge()">Check Age</button>
+            <button onclick="resetAge()">Reset</button>
+        </div>
+        <p id="ageStatus"></p>
+    </div>
+
+    <script src="if_else.js"></script>
+    <script src="switch.js"></script>
+    <script src="ternary.js"></script>
+</body>
+
+</html>

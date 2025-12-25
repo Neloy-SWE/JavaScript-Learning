@@ -4,7 +4,7 @@
     // let a;
     let a = 100;
     // before execute the code, let hoisted in script <value unavailable>
-    // after execute the code, let hoisted with value (undefined (line 8) or assigned value:100 (line 9) in this case)
+    // after execute the code, let hoisted with value (undefined (line 4) or assigned value:100 (line 5) in this case)
 
     var b = 10; // var hoisted in global with value "undefined"
     console.log(b);

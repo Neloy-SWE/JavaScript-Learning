@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-Learning-functions</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- this keyword check for event -->
+    <div>
+        <h1>Hide button using self event</h1>
+        <button onclick="this.style.display='none'">
+            Click to Remove Me!
+        </button>
+    </div>
+
+    <div class="block">
+        <h1>Passing self event in arrow and normal funciton</h1>
+        <button onclick="checkThisUsingArrowFromElement(this)">
+            Click to check event from arrow!
+        </button>
+        <button onclick="checkThisUsingNormalFunctionFromElement(this)">
+            Click to check event from normal function!
+        </button>
+    </div>
+
+    <div class="block">
+        <h1>Independent arrow and normal function</h1>
+        <button onclick="checkThisFromIndependentArrow()">
+            Click to check event of independent arrow function!
+        </button>
+
+        <button onclick="checkThisFromIndependentNormal()">
+            Click to check event of independent normal function!
+        </button>
+    </div>
+
+
+    <div class="block">
+        <h1>Element that attached with event listener</h1>
+        <button id="arrow">Check event of arrow function</button>
+        <button id="normal">Check event of normal function</button>
+    </div>
+
+    <div class="block">
+        <h1>Checking callback functions</h1>
+            <button id="clickMe">Click Me</button>
+    <button id="checkClosure">Check Closure</button>
+    </div>
+
+
+
+
+    <!-- <script src="basic_functions.js"></script> -->
+    <!-- <script src="arrow_functions.js"></script> -->
+    <!-- <script src="this_function.js"></script> -->
+    <!-- <script src="callback_function.js"></script> -->
+    <!-- <script src="higher_order_function.js"></script> -->
+    <!-- <script src="map_filter_reduce.js"></script> -->
+    <!-- <script src="closures.js"></script> -->
+    <!-- <script src="constructor_function.js"></script> -->
+    <script src="setTimeout.js"></script>
+</body>
+
+</html>

@@ -36,3 +36,74 @@ There are different types of scopes:
 3. **Block scope:** Block scope is a programming concept where variables are accessible only within a specific code block, defined by curly braces {}.
 4. **Lexical scope:** Lexical scope is a programming concept where a variable's scope is determined by its physical location in the source code at the time of writing, not by where the function is called.
 5. **Nested scope:** A nested scope is a programming concept where one scope (like a function or block) is defined inside another, creating layers, allowing inner scopes to access variables from outer (enclosing) scopes but not vice versa.
+
+
+## Garbage collection
+Garbage collection refers to the process of automatically reclaiming memory occupied by objects that are no longer accessible.
+
+**How Garbage Collection works in JavaScript?**
+- JavaScript stores variables and objects in memory (the heap) during program execution.
+- The engine tracks objects and variables in use, with unused ones becoming unreachable.
+- Unreachable objects are automatically detected and removed by the JavaScript engine through garbage collection.
+- Garbage collection runs in the background, periodically freeing memory by removing unused objects.
+- It happens automatically, so developers don’t need to manage memory manually, preventing memory leaks.
+
+**Mark and Sweep Algorithm:**
+Any garbage collection algorithm must perform 2 basic operations. One, it should be able to detect all the unreachable objects and secondly, it must reclaim the heap space used by the garbage objects and make the space available again to the program. The above operations are performed by Mark and Sweep Algorithm in two phases as listed and described further as follows:
+- Mark phase
+- Sweep phase
+
+**Advantage:**
+- It handles the case with cyclic references, even in the case of a cycle, this algorithm never ends up in an infinite loop.
+- There are no additional overheads incurred during the execution of the algorithm.
+
+**Disadvantage:**
+- The main disadvantage of the mark-and-sweep approach is the fact that  normal program execution is suspended while the garbage collection algorithm runs.
+- Another disadvantage is that, after the Mark and Sweep Algorithm is run several times on a program, reachable objects end up being separated by many, small unused memory regions. 
+  - This problem is termed “Fragmentation”. We have memory available in “fragments” but we are unable to utilize that memory space. We can reduce the fragmentation by compaction; we shuffle the memory content to place all the free memory blocks together to form one large block.
+
+  Mark and Sweep algorithm concept code:
+
+```
+class algo {
+    constructor() {
+        this.objects = [];
+    }
+
+    createObject(name) {
+        const obj = { name: name, refCount: 1 };
+        this.objects.push(obj);
+        return obj;
+    }
+
+    mark() {
+        this.objects.forEach(obj => {
+            if (obj.refCount > 0) {
+                obj.marked = true;
+            }
+        });
+    }
+
+    sweep() {
+        this.objects = this.objects.filter(obj => obj.marked);
+    }
+
+    collectGarbage() {
+        this.mark();
+        this.sweep();
+    }
+    prints() {
+        return this.objects
+    }
+}
+const gc = new algo();
+
+const obj1 = gc.createObject("Object 1");
+const obj2 = gc.createObject("Object 2");
+
+obj2.refCount = 0;
+
+gc.collectGarbage();
+console.log(gc.prints())
+```
+

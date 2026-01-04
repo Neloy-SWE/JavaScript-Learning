@@ -5,7 +5,7 @@
 
 const ws = new WeakSet();
 try {
-    ws.add(1); // TypeError: Invalid value used in weak set
+    wm.add(1); // TypeError: Invalid value used in weak set
 } catch (e) {
     console.log(e);
 }
@@ -16,14 +16,14 @@ try {
 
 let john = { name: "John" };
 let array = [ john ];
-ws.add(john);
-console.log("ws has john?", ws.has(john));
+wm.add(john);
+console.log("ws has john?", wm.has(john));
 john = null;
 console.log(john);
 // console.log(array[0]);
 array = null;
-console.log(ws); // sometimes there can be john or no properties
-console.log("ws has john?", ws.has(john));
+console.log(wm); // sometimes there can be john or no properties
+console.log("ws has john?", wm.has(john));
 // Can't get ws.size, as it's a WeakSet,
 // but it's 0 or soon be 0
 
@@ -32,6 +32,6 @@ console.log("ws has john?", ws.has(john));
  */
 
 // delete(object):
-ws.delete(john);
-console.log(ws);
+wm.delete(john);
+console.log(wm);
 

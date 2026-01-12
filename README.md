@@ -106,4 +106,3 @@ obj2.refCount = 0;
 gc.collectGarbage();
 console.log(gc.prints())
 ```
-

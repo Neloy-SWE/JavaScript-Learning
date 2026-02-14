@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-Learning-events</title>
+</head>
+
+<body>
+    <p id="idDOMLoad"></p>
+
+    <!-- event with element -->
+    <p id="changeWithElement">This text will change</p>
+    <button onclick="document.getElementById('changeWithElement').innerHTML = 'changed'">Initiate Change</button>
+
+    <!-- changing the content of its own element -->
+    <button onclick="this.innerHTML = 'Button Clicked';">Click Me</button>
+
+    <div style="margin-top: 50px;">
+        <button id="buttonShowDate" onclick="showDate()">Show Date</button>
+        <p id="idShowDate"></p>
+    </div>
+
+    <div style="margin-top: 50px;">
+        <button id="buttonWithListener">Check Listener</button>
+    </div>
+
+    <div style="margin-top: 50px;">
+        <div id="divParent" style="padding: 100px; background-color: aqua; ">
+            <div id="divChild" style="padding: 50px; background-color: blueviolet;"></div>
+        </div>
+    </div>
+
+    <div id="divWheel" style="height: 50px; width: 50px; background-color: chocolate;"></div>
+
+    <div style="margin-top: 50px;">
+    <input type="text" id="keyCheck" placeholder="press keys">
+    <p id="keydownEventOutput"></p>
+    <p id="keyupEventOutput"></p>
+</div>
+
+    <script src="basic_events.js"></script>
+</body>
+
+</html>

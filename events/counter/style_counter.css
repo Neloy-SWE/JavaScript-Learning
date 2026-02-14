@@ -14,10 +14,22 @@ nav {
     padding-top: 200px;
 }
 
+.containerCounter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerCounter p {
+    font-size: 50px;
+    color: #daa700;
+}
+
 .containerButton {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 }
 
 .containerButton button {
@@ -33,18 +45,6 @@ nav {
 .containerButton button:nth-child(3) {
     background-color: #daa700;
     color: #070031;
-}
-
-.containerCounter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-}
-
-.containerCounter p {
-    font-size: 50px;
-    color: #daa700;
 }
 
 @media (max-width: 750px) {

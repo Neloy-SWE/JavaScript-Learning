@@ -27,7 +27,8 @@ console.log(person.fullName.apply(person1));
 // The apply() method is very handy if you want to use an array instead of an argument list.
 // console.log(person.identity.apply(person1, "Dhaka", "BD")); // TypeError: CreateListFromArrayLike called on non-object
 console.log(person.identity.apply(person1, ["Dhaka", "BD"]));
-// console.log(person.identity.apply(["Dhaka", "BD"])); // all 4 value will be undefined.
+// console.log(person.identity.apply(person1, ["Dhaka", "BD", "ok"])); // 3rd value will be ignored. only 1st 2 value will be used.
+// console.log(person.identity.apply(["a","b", "Dhaka", "BD"])); // all 4 value will be undefined, because we pass array for 1st argument, but it should be object. if we use strict mode then must pass something for 1st argument.
 // console.log(person.identity.apply(null, ["Dhaka", "BD"])); // first 2 value will be undefined. if we use strict mode then must pass something for 1st argument.
 
 // bind:
@@ -43,6 +44,7 @@ const superCar = {
     carName: "Lalalulu",
 }
 
+// car.showCarName();
 const showCarName = car.showCarName;
 showCarName(); // car name is undefined
 // bind method hold the context(this) of object.

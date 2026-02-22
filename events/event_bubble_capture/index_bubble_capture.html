@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-Learning-event-bubbling-capturing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="section">
+        <div class="design" id="bGrandparent">
+            <div class="design" id="bParent">
+                <div class="design" id="bChild">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="section">
+        <div class="design" id="cGrandparent">
+            <div class="design" id="cParent">
+                <div class="design" id="cChild">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="section">
+        <div class="design" id="nGrandparent">
+            <div class="design" id="nParent">
+                <div class="design" id="nChild">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="event_bubble_capture.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+h1 {
+    color: #0046c7;
+    text-align: center;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.input-section {
+    display: inline-block;
+    text-align: left;
+}
+
+.input-section label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    padding-left: 10px;
+}
+
+.input-section input {
+    width: 300px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #525252;
+    border-radius: 10px;
+}

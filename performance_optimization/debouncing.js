@@ -1,10 +1,4 @@
-let counter = 0;
-// const callAPI = function () {
-const callAPI = (value) => {
-    counter++;
-    // console.log(`API called ${counter} times with value: ${this.value}`); 
-    console.log(`API called ${counter} times with value: ${value}`);
-}
+import { callAPI } from "./call_api.js";
 
 const functionDebounce = (func, delay) => {
     let timeoutId;
@@ -19,14 +13,4 @@ const functionDebounce = (func, delay) => {
     }
 }
 
-const debouncedCallAPI = functionDebounce(callAPI, 1000);
-
-const inputDebounce = document.getElementById("debounce");
-
-// inputDebounce.addEventListener("input", function () {
-//     debouncedCallAPI.call(this, this.value);
-// });
-
-inputDebounce.addEventListener("input", () => {
-    debouncedCallAPI(inputDebounce.value);
-});
+export const debouncedCallAPI = functionDebounce(callAPI, 500);

@@ -1,6 +1,25 @@
 # JavaScript-Learning
 My personal JavaScript learning repository — covering fundamentals to advanced concepts. in this repository you may find topic wise code examples. also you may find a lot of comments. In some comments, I have added note regarding topic, in some comments I have added some extra code examples. read both code files and this readme.md file carefully to understand javascript properly. please let me know if I miss something.
 
+## Table of Contents
+
+- [Execution Context](#execution-context)
+- [Scope](#scope)
+- [JavaScript Runtime Environment](#javascript-runtime-environment)
+- [Garbage Collection](#garbage-collection)
+- [Event loop](#event-loop)
+- [strict mode](#strict-mode)
+- [Web API](#web-api)
+- [Async JavaScript](#promises-and-asyncawait)
+- [Functions](#function)
+- [Objects](#object)
+- [DOM](#document-object-model)
+- [Events](#event)
+- [Polyfill](#polyfill)
+- [Performance Optimization](#performance-optimization-debouncing-throttling)
+- [Local Storage](#local-storage)
+- [Others](#others)
+
 ## Start
 JavaScript is a cross-platform, object-oriented scripting language used to make webpages interactive.<br><br>
 
@@ -32,7 +51,7 @@ scope is the context that determines where variables can be accessed, helping wr
 
 There are different types of scopes:
 1. **Global scope:** Global scope is the outermost level of a program where variables and functions are accessible from anywhere, throughout the entire application's lifetime.
-2. **Funciton/local scope:** Function scope, in programming, refers to the visibility and accessibility of variables and other identifiers within a function. Variables declared within a function are local to that function. Each time a function is called, a new execution context is created. This allows for independent execution of the function without affecting variables in other scopes. While a function creates its own scope, it can typically access variables defined in its enclosing (or parent) scope. This is known as lexical scoping or static scoping.
+2. **Function/local scope:** Function scope, in programming, refers to the visibility and accessibility of variables and other identifiers within a function. Variables declared within a function are local to that function. Each time a function is called, a new execution context is created. This allows for independent execution of the function without affecting variables in other scopes. While a function creates its own scope, it can typically access variables defined in its enclosing (or parent) scope. This is known as lexical scoping or static scoping.
 3. **Block scope:** Block scope is a programming concept where variables are accessible only within a specific code block, defined by curly braces {}.
 4. **Lexical scope:** Lexical scope is a programming concept where a variable's scope is determined by its physical location in the source code at the time of writing, not by where the function is called.
 5. **Nested scope:** A nested scope is a programming concept where one scope (like a function or block) is defined inside another, creating layers, allowing inner scopes to access variables from outer (enclosing) scopes but not vice versa.
@@ -40,7 +59,7 @@ There are different types of scopes:
 see code example based on scope concept at [folder: scope](scope).
 
 ## Window, this
-- If we run an empty js file, the js engine will still create a global execution context and set some memory space. Js engine creates an object called window into the global space that contains a lot of variables and functions. Means window is a global object that is created along with the global execution context. “this” keyword also refers to that window. Means this === window returns true.
+- If we run an empty js file, the js engine will still create a global execution context and set some memory space. Js engine creates an object called window into the global space that contains a lot of variables and functions. Means window is a global object that is created along with the global execution context. “this” keyword also refers to that window. In browsers (non-strict mode, global scope): this === window // true. However, in strict mode or in Node.js, this may behave differently.
 
 ## JavaScript Runtime Environment
 - **JavaScript Runtime Environment** is a container that has everything to run a js code. Inside the JSRE, there are js engine, APIs, event loop, callback queue, microtask queue. Js engine is the heart of JSRE. Every browser has that JSRE. even Node.js also has JSRE. For this JSRE, js can run into a lot of different machines.
@@ -118,8 +137,25 @@ obj2.refCount = 0;
 gc.collectGarbage();
 console.log(gc.prints())
 ```
+**Note**: *JavaScript engines implement garbage collection internally.
+This example is only for conceptual understanding.*
 
-## Callback hell (Pyramid of Doom):
+## Event loop
+The event loop is a core mechanism in JavaScript that allows it to handle asynchronous operations efficiently without blocking the main execution thread, despite JavaScript being a single-threaded language. It constantly monitors the call stack and various queues to manage the execution order of code.<br> Event loop work with:
+- **callback queue**: The callback queue (also known as the task queue or macrotask queue) is a data structure in JavaScript that holds the callback functions associated with asynchronous operations like timers (setTimeout, setInterval) and I/O events, once those operations are completed. It operates on a First-In, First-Out (FIFO) principle.
+- **microtask queue**: The microtask queue is a crucial part of the JavaScript event loop mechanism that holds small, high-priority asynchronous tasks. It ensures that certain operations, like promise callbacks, are executed as soon as possible after the current synchronous code finishes, and before the browser handles less urgent tasks (macrotasks) like timers or rendering updates.
+
+microtask queue has higher priority than callback queue.
+
+## strict mode
+JavaScript's strict mode is an opt-in feature that enforces a more restricted and safer variant of the language by applying stricter parsing and error handling rules to help developers write cleaner, more reliable, and more secure code.
+
+## Web API
+A Web API is an interface that allows JavaScript to interact with the web browser and other web services over the internet, providing functionality that is not part of the core JavaScript language itself. They are essentially an extra set of tools and functions that the browser (client-side) or a server (server-side) exposes for use by developers. Example:
+- Browser APIs: dom, fetch, web storage, geolocation, etc.
+- Third-Party and Server-Side APIs: google maps, youtube, weather, etc.
+
+## Callback hell (Pyramid of Doom)
 
 - **Callback function**: In JavaScript, callbacks are functions that are passed as arguments from one function to another and are executed after the completion of a certain task.
 - **Callback hell**: Callback Hell in JavaScript can be defined as the situation where we have nested callbacks which makes the code difficult to read and debug. The term "callback hell" describes the deep nesting of functions that can result in poor code readability and difficulty in debugging, especially when handling multiple asynchronous operations.
@@ -129,13 +165,13 @@ To avoid callback hell, we can use promise chaining.
 - A Promise in JavaScript is an object representing the eventual completion (or failure) of an asynchronous operation and its resulting value. It acts as a placeholder, allowing asynchronous methods to return values like synchronous ones.
 - async and await are modern keywords that simplify asynchronous programming by allowing you to write asynchronous code in a manner that looks and behaves like synchronous, sequential code. They are built on top of Promises and eliminate the need for complex .then() and .catch() promise chains, avoiding "callback hell".<br> using modern language features such as Promises and Async/Await, which provide a flatter, more synchronous-looking code structure, we can avoid callback hell.
 
-to know more about promise and async/await plese follow this [folder: asynchronous](asynchronous).
+to know more about promise and async/await please follow this [folder: asynchronous](asynchronous).
 
 ## Function
 A function is a reusable block of code designed to perform a specific task. It is executed only when it is called or invoked, which allows the same code to run multiple times without repetition, promoting modularity and efficiency.<br> you may find concepts like: **closures, callback function, arrow function, constructor function, higher order function, anonymous function,** etc and some basic uses of map, filter, reduce function, uses of keyword: "**this**" by following this [folder: functions](functions).
 
 ## Object
-An object is a standalone entity and a complex data type used to store collections of related data and functionality. Objects are essentially collections of properties (key-value pairs) and methods (functions as property values).<br> I have added some example of built-in methods for object like: call, apply, bind and others; example for object constructor in [folder: objects](objects).
+An object is a standalone entity and a complex data type used to store collections of related data and functionality. Objects are essentially collections of properties (key-value pairs) and methods (functions as property values).<br> I have added some example of built-in methods for object like: call, apply, bind and other built-in methods; example for object constructor in [folder: objects](objects).
 
 ## Module
 module is a single file of reusable code that organizes related functionality (variables, functions, classes, etc.) into a self-contained unit. This system allows developers to break down large applications into smaller, more manageable pieces, which can then be imported and used in other files.<br> for code example based on module concept follow [folder: modules](modules).
@@ -144,7 +180,7 @@ module is a single file of reusable code that organizes related functionality (v
 The Document Object Model (DOM) is a programming interface for web documents that represents the page as a tree of objects. It provides JavaScript with the ability to dynamically access, modify, and style the content and structure of a webpage, making it interactive.<br> to understand the basic of DOM, follow [folder: dom](dom).
 
 ## Event
-an event is a signal that an action or occurrence has taken place in the browser. These can be user interactions (like a mouse click or key press) or system-generated occurrences (like a page finishing loading or a window resizing).<br> check out [folder: events](events) to learn concept about event, bubbling, capturing, delegation and other basic concpets.
+an event is a signal that an action or occurrence has taken place in the browser. These can be user interactions (like a mouse click or key press) or system-generated occurrences (like a page finishing loading or a window resizing).<br> check out [folder: events](events) to learn concept about event, bubbling, capturing, delegation and other basic conpets.
 
 ## Polyfill
 A polyfill is a piece of code, usually written in JavaScript, that provides modern functionality in older web browsers or environments that do not support it natively.<br> to understand the concept follow [folder: polyfill](polyfill).
